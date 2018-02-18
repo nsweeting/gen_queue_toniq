@@ -1,13 +1,18 @@
 defmodule GenQueueToniq.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       app: :gen_queue_toniq,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: description(),
+      package: package(),
+      docs: docs()
     ]
   end
 
@@ -15,6 +20,32 @@ defmodule GenQueueToniq.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp description do
+    """
+    GenQueue adapter for Toniq
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*"],
+      maintainers: ["Nicholas Sweeting"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/nsweeting/gen_queue_toniq",
+        "GenQueue" => "https://github.com/nsweeting/gen_queue"
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      extras: ["README.md"],
+      main: "readme",
+      source_url: "https://github.com/nsweeting/gen_queue_toniq"
     ]
   end
 
